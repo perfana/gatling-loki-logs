@@ -1,0 +1,36 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+Request:
+flaky_call: KO status.find.is(200), but actually found 500
+=========================
+Session:
+Session(AfterburnerBasicSimulation,320,Map(gatling.http.ssl.sslContexts -> io.gatling.http.util.SslContexts@4cb26cb2, gatling.http.cache.dns -> io.gatling.http.resolver.ShufflingNameResolver@717e626e, gatling.http.cache.baseUrl -> http://localhost:8090),KO,List(),io.gatling.core.protocol.ProtocolComponentsRegistry$$Lambda/0x0000200001569338@6ef1f7c8,io.netty.channel.nio.NioEventLoop@f1a45f8)
+=========================
+HTTP request:
+GET http://localhost:8090/flaky?maxRandomDelay=240&flakiness=5
+headers:
+	perfana-request-name: flaky_call
+	perfana-test-run-id: GENERATED_TEST_ID-1737800499863
+	accept: */*
+	user-agent: curl/7.54.0
+	host: localhost:8090
+=========================
+HTTP response:
+version:
+	HTTP/1.1
+status:
+	500
+headers:
+	X-Content-Type-Options: nosniff
+	X-XSS-Protection: 1; mode=block
+	Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+	Pragma: no-cache
+	Expires: 0
+	X-Frame-Options: DENY
+	Content-Type: application/json
+	Transfer-Encoding: chunked
+	Date: Sat, 25 Jan 2025 10:22:05 GMT
+	Connection: close
+
+body:
+{\"developerMessage\":\"AfterburnerException: Sorry, flaky call failed after 74 milliseconds .\",\"userMessage\":\"The afterburner failed for the following reason: Sorry, flaky call failed after 74 milliseconds .\",\"errorCode\":500}
+<<<<<<<<<<<<<<<<<<<<<<<<<
