@@ -76,7 +76,7 @@ sonatypeRepository := "https://oss.sonatype.org/service/local/staging/deploy/mav
 // Project Metadata
 description := "Send Gatling's logs to Loki"
 licenses := List("The MIT License (MIT)" -> url("https://opensource.org/licenses/MIT"))
-homepage := Some(url("https://github.com/Amerousful/gatling-loki-logs"))
+homepage := Some(url("https://github.com/perfana/gatling-loki-logs"))
 
 // Disable repository information in the POM
 pomIncludeRepository := { _ => false }
