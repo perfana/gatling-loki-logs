@@ -1,5 +1,3 @@
-To make the GitHub Actions workflow a manual release instead of being triggered on push, you can use the `workflow_dispatch` event. Here is the updated workflow configuration:
-
 name: Release to Maven Central
 
 on:
@@ -33,13 +31,16 @@ jobs:
       - name: Install dependencies
         run: sbt update
 
+      - name: Run tests
+        run: sbt test
+
       - name: Publish to Maven Central
         env:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-          PGP_PASSPHRASE: ${{ secrets.GGP_SIGNING_KEY }}
-          PGP_SIGNING_KEY: ${{ secrets.GGP_SIGNING_PASSWORD }}
+          PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
+          PGP_SECRET: ${{ secrets.PGP_SECRET }}
         run: |
-          echo $PGP_SIGNING_KEY | base64 --decode > /tmp/pgp-key.asc
+          echo $PGP_SECRET | base64 --decode > /tmp/pgp-key.asc
           gpg --batch --import /tmp/pgp-key.asc
           sbt +publishSigned sonatypeBundleRelease
