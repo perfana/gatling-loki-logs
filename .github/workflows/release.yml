@@ -45,6 +45,6 @@ jobs:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_SIGNING_KEY }}
           GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSWORD }}
         run: |
-          echo $PGP_SECRET | base64 --decode > /tmp/pgp-key.asc
+          echo $GPG_PRIVATE_KEY | base64 --decode > /tmp/pgp-key.asc
           gpg --batch --import /tmp/pgp-key.asc
           sbt +publishSigned sonatypeBundleRelease
