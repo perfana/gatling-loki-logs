@@ -51,7 +51,7 @@ jobs:
           GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSWORD }}
         run: |
           # Decode the key (use quotes and correct flags)
-          echo "${{ secrets.GPG_SIGNING_KEY }}" | base64 -d > /tmp/pgp-key.asc
+          echo "${{ secrets.GPG_SIGNING_KEY }}"  > /tmp/pgp-key.asc
 
           # Import the key with passphrase
           gpg --batch --yes --pinentry-mode loopback \
