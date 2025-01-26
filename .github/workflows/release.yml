@@ -55,7 +55,7 @@ jobs:
 
           # Import the key with passphrase
           gpg --batch --yes --pinentry-mode loopback \
-              --passphrase "${{ secrets.GPG_SIGNING_KEY }}" \
+              --passphrase "${{ secrets.GPG_SIGNING_PASSWORD }}" \
               --import /tmp/pgp-key.asc
 
           # Publish
