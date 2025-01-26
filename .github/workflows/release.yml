@@ -48,14 +48,14 @@ jobs:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           GPG_PRIVATE_KEY: ${{ secrets.GPG_SIGNING_KEY }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSWORD }}
+          PGP_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSWORD }}
         run: |
           # Decode the key (use quotes and correct flags)
           echo "${{ secrets.GPG_SIGNING_KEY }}"  > /tmp/pgp-key.asc
 
           # Import the key with passphrase
           gpg --batch --yes --pinentry-mode loopback \
-              --passphrase "${{ secrets.GPG_SIGNING_PASSWORD }}" \
+              --passphrase "$PGP_PASSPHRASE" \
               --import /tmp/pgp-key.asc
 
           # Publish
