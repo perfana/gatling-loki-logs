@@ -44,7 +44,7 @@ Compile / doc / scalacOptions ++= Seq(
 // Configure HTTP client to follow redirects
 updateOptions := updateOptions.value.withGigahorse(true)
 // GPG signing settings
-pgpPassphrase := sys.env.get("GPG_PASSPHRASE").map(_.toCharArray)
+ThisBuild / pgpPassphrase := sys.env.get("GPG_PASSPHRASE").map(_.toCharArray)
 
 // Sonatype repository publishing
 sonatypeProfileName := "io.perfana" // Replace with your Sonatype organization
