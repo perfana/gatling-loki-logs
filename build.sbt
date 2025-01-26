@@ -71,8 +71,7 @@ developers := List(
   )
 )
 sonatypeProfileName := "io.perfana"
-sonatypeRepository := "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-
+sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
 // Project Metadata
 description := "Send Gatling's logs to Loki"
 licenses := List("The MIT License (MIT)" -> url("https://opensource.org/licenses/MIT"))
