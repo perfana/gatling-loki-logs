@@ -47,9 +47,9 @@ updateOptions := updateOptions.value.withGigahorse(true)
 ThisBuild / pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toCharArray)
 
 // Sonatype repository publishing
-sonatypeProfileName := "io.perfana" // Replace with your Sonatype organization
-sonatypeCredentialHost := "s01.oss.sonatype.org"
-sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+//sonatypeCredentialHost := "s01.oss.sonatype.org"
+sonatypeProfileName := "io.perfana"
+sonatypeRepository := "https://oss.sonatype.org/"
 // Automatically release after closing staging repository
 //publishSigned := publishSigned.value
 //sonatypeBundleRelease := sonatypeBundleRelease.value
@@ -71,8 +71,7 @@ developers := List(
     url   = url("https://github.com/perfana")
   )
 )
-sonatypeProfileName := "io.perfana"
-sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+
 // Project Metadata
 description := "Send Gatling's logs to Loki"
 licenses := List("The MIT License (MIT)" -> url("https://opensource.org/licenses/MIT"))
