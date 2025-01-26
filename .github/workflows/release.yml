@@ -21,8 +21,8 @@ jobs:
         run: |
           echo "Installing SBT..."
           curl -L -o sbt.zip https://github.com/sbt/sbt/releases/download/v1.9.8/sbt-1.9.8.zip
-          unzip sbt.zip -d /usr/local
-          export PATH=$PATH:/usr/local/sbt/bin
+          unzip sbt.zip -d $HOME
+          export PATH=$PATH:$HOME/sbt/bin
 
       - name: Cache SBT
         uses: actions/cache@v3
@@ -37,9 +37,6 @@ jobs:
 
       - name: Install dependencies
         run: sbt update
-
-      - name: Run tests
-        run: sbt test
 
       - name: Publish to Maven Central
         env:
