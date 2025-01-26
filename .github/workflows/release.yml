@@ -37,6 +37,11 @@ jobs:
 
       - name: Install dependencies
         run: sbt update
+        env:
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_SIGNING_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSWORD }}
 
       - name: Publish to Maven Central
         env:
