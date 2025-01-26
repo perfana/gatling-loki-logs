@@ -22,7 +22,7 @@ jobs:
           echo "Installing SBT..."
           curl -L -o sbt.zip https://github.com/sbt/sbt/releases/download/v1.9.8/sbt-1.9.8.zip
           unzip sbt.zip -d $HOME
-          export PATH=$PATH:$HOME/sbt/bin
+          echo "$HOME/sbt/bin" >> $GITHUB_PATH
 
       - name: Cache SBT
         uses: actions/cache@v3
