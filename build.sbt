@@ -1,5 +1,5 @@
 name := "gatling-loki-logs"
-version := "0.1.0"
+version := "0.1.1"
 scalaVersion := "2.13.12"
 
 // Java 17 settings
