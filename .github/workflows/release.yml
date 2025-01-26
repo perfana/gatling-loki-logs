@@ -59,4 +59,5 @@ jobs:
               --import /tmp/pgp-key.asc
 
           # Publish
-          sbt +publishSigned sonatypeBundleRelease
+          sbt publishSigned 
+          sbt sonatypeBundleRelease

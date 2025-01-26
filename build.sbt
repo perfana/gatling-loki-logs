@@ -48,11 +48,27 @@ ThisBuild / pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toCharArray)
 
 // Sonatype repository publishing
 //sonatypeCredentialHost := "s01.oss.sonatype.org"
+// This becomes a simplified version of the above key.
+publishTo := sonatypePublishToBundle.value
+// Set this to the same value set as your credential files host.
+sonatypeCredentialHost := "oss.sonatype.org"
+// Set this to the repository to publish to using `s01.oss.sonatype.org`
+// for accounts created after Feb. 2021.
+sonatypeRepository := "https://oss.sonatype.org/service/local"
 sonatypeProfileName := "io.perfana"
 sonatypeCredentialHost := "oss.sonatype.org"
-sonatypeRepository := "https://oss.sonatype.org/service/local"// Automatically release after closing staging repository
-//publishSigned := publishSigned.value
-//sonatypeBundleRelease := sonatypeBundleRelease.value
+
+ThisBuild / pomIncludeRepository := { _ => false }
+
+ThisBuild / publishTo := {
+  // For accounts created after Feb 2021:
+  // val nexus = "https://s01.oss.sonatype.org/"
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+ThisBuild / publishMavenStyle := true
+
 
 // SCM Information
 scmInfo := Some(
