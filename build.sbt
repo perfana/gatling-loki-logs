@@ -48,7 +48,8 @@ ThisBuild / pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toCharArray)
 
 // Sonatype repository publishing
 sonatypeProfileName := "io.perfana" // Replace with your Sonatype organization
-
+sonatypeCredentialHost := "s01.oss.sonatype.org"
+sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
 // Automatically release after closing staging repository
 //publishSigned := publishSigned.value
 //sonatypeBundleRelease := sonatypeBundleRelease.value
